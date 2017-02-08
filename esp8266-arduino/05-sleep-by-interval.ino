@@ -1,4 +1,4 @@
-// in board nodeMCU wire up pin D0 to pin RST
+// in board nodeMCU wire up pin D0 (GPIO16) to pin RST
 // GPIO16 on ESP8266 is Deep-Sleep Wakeup
 void setup() {
   Serial.begin(9600);
