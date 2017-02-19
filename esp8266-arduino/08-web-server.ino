@@ -1,25 +1,36 @@
 // Derived from: https://learn.sparkfun.com/tutorials/esp8266-thing-hookup-guide/example-sketch-ap-web-server
 
 // Hardware: NodeMCU
-// Edit: L12 and L13 to set AP name prefix and AP password
+// Edit: L15, L16 and L17 to set AP name prefix and AP password
 
 // Usage:
 // 1. Select AP name "Belle XXX"
 // 2. Put in AP password
-// 3. Go to browser http://192.168.4.1/
+// 3. Go to browser http://belle.local
 // 4. View Hello World!
 
 #include <ESP8266WiFi.h>
+#include <ESP8266mDNS.h>
 
-String AP_NamePrefix = "Belle "; // set AP name prefix
+String AP_NamePrefix = "AP "; // set AP name prefix
 const char WiFiAPPSK[] = "secret"; // set AP password
+const char* DomainName = "domain"; // set domain name domain.local
 
 WiFiServer server(80);
 
 void setup() {
   Serial.begin(9600);
   setupWiFi();
+
+  if (!MDNS.begin(DomainName)) {
+    Serial.println("Error setting up MDNS responder!");
+    while(1) {
+      delay(1000);
+    }
+  }
+
   server.begin();
+  MDNS.addService("http", "tcp", 80);
 }
 
 void loop() {
