@@ -27,8 +27,6 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
-int value = 0;
-
 void loop() {
   digitalWrite(LED_BUILTIN, LOW);
   delay(500);
