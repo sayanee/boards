@@ -1,5 +1,8 @@
 # ESP8266
 
+- hardware: nodeMCU
+- firmware: C
+
 ## Pre-requisites
 
 1. macOS Sierra
