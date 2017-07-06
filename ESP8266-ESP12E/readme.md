@@ -41,11 +41,11 @@ There are 2 types of modes: (1) Normal (2) Flashing
     - `GND` to `GND`
     - `TX` pin to `RX` of ESP8266
     - `RX` pin to `TX` of ESP8266
-    - `5V` pin to `VCC` of ESP8266
+    - `5V` pin to `VCC/5V` of ESP8266 through an LDO `Vout` to `3.3V`
 - ESP8266, ESP-12 module
     - `RX` pin to `TX` of FTDI chip
     - `TX` pin to `RX` of FTDI chip
-    - `5V` pin to `VCC` of FTDI chip
+    - `3.3 V` pin to `VCC/5V` of FTDI chip through an LDO
 
 #### See the serial monitor
 
