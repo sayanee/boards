@@ -1,4 +1,5 @@
 // Reference: https://github.com/esp8266/Arduino/blob/master/libraries/EEPROM/examples/eeprom_read/eeprom_read.ino
+// INFO: Read integer from EEPROM
 
 #include <EEPROM.h>
 

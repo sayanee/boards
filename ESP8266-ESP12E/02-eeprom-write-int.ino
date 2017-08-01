@@ -1,4 +1,6 @@
 // https://github.com/esp8266/Arduino/tree/master/libraries/EEPROM/examples/eeprom_write
+// INFO: Write integer to EEPROM
+
 #include <EEPROM.h>
 
 int addr = 0;
