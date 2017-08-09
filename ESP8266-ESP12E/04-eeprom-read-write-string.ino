@@ -26,17 +26,23 @@ void writeKey(String writeStr) {
     Serial.print("[INFO] Writing to EEPROM: ");
     Serial.println(writeStr[i]);
   }
+
+  EEPROM.commit();
 }
 
 String readKey() {
   String readStr;
+  char readChar;
   Serial.print("[INFO] Reading from EEPROM: ");
 
+  // TODO: Read key after ESP reset
   // TODO: Store length of key
   for (int i = 0; i < 22; ++i) {
-    readStr += char(EEPROM.read(i));
+    readChar = char(EEPROM.read(i));
+    readStr += readChar;
+
     Serial.print("Char: ");
-    Serial.println(char(EEPROM.read(i)));
+    Serial.println(readChar);
   }
 
   Serial.println("");
