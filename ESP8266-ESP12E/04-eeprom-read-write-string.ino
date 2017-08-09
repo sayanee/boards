@@ -1,22 +1,24 @@
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
 #include <EEPROM.h>
 
 String writeStr = "ohai";
 
 void setup() {
   Serial.begin(115200);
-  EEPROM.begin(512);
-  delay(10);
   Serial.println();
   Serial.println();
   Serial.println("Startup");
+  delay(10000);
 
-  Serial.println("Writing to EEPROM...");
+  writeKey(writeStr);
+}
+
+void writeKey(String writeStr) {
+  EEPROM.begin(512);
+  delay(10);
 
   for (int i = 0; i < writeStr.length(); ++i) {
     EEPROM.write(i, writeStr[i]);
-    Serial.print("Wrote: ");
+    Serial.print("[INFO] Writing to EEPROM: ");
     Serial.println(writeStr[i]);
   }
 }
