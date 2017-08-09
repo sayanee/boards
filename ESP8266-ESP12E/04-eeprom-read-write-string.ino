@@ -12,6 +12,11 @@ void setup() {
   writeKey(writeStr);
 }
 
+void loop() {
+  readKey();
+  delay(2000);
+}
+
 void writeKey(String writeStr) {
   EEPROM.begin(512);
   delay(10);
@@ -23,16 +28,18 @@ void writeKey(String writeStr) {
   }
 }
 
-void loop() {
+String readKey() {
   String readStr;
-  Serial.println("Reading EEPROM...");
+  Serial.print("[INFO] Reading from EEPROM: ");
 
-  for (int i = 0; i < 32; ++i) {
+  // TODO: Store length of key
+  for (int i = 0; i < 22; ++i) {
     readStr += char(EEPROM.read(i));
+    Serial.print("Char: ");
+    Serial.println(char(EEPROM.read(i)));
   }
 
-  Serial.print("Read: ");
+  Serial.println("");
   Serial.println(readStr);
-
-  delay(2000);
+  return readStr;
 }
