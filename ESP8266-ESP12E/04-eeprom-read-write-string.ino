@@ -35,7 +35,8 @@ String readKey() {
   char readChar;
   Serial.print("[INFO] Reading from EEPROM: ");
 
-  // TODO: Read key after ESP reset
+  EEPROM.begin(512);
+  
   // TODO: Store length of key
   for (int i = 0; i < 22; ++i) {
     readChar = char(EEPROM.read(i));
