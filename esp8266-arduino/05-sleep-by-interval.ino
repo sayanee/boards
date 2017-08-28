@@ -1,25 +1,15 @@
 // in board nodeMCU wire up pin D0 (GPIO16) to pin RST
-// GPIO16 on ESP8266 is Deep-Sleep Wakeup
-void setup() {
-  Serial.begin(9600);
-  pinMode(LED_BUILTIN, OUTPUT);
+#include <ESP8266WiFi.h>
 
-  Serial.println('Wake up!')
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(500);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(500);
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(500);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(500);
-  // on wakeup Arduino will run setup()
+// Time to sleep (in seconds):
+const int sleepTimeS = 10;
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println("Wakeup!");
 }
 
 void loop() {
-  Serial.println("Sleep.... 2");
-  delay(100);
-  Serial.println("Sleep.... 1");
-  delay(100);
-  ESP.deepSleep(5e6, WAKE_RF_DEFAULT); // sleep for 5 seconds
+  Serial.println("Going into deep sleep for 10 seconds");
+  ESP.deepSleep(sleepTimeS * 1000000);
 }
